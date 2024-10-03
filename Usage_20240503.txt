@@ -1,0 +1,64 @@
+===============================================================
+ & Apache H2 Database - 2024.05.03
+===============================================================
+
+Step1. Download & Install H2 Database
+	(1) https://www.h2database.com/html/main.html
+	(2) Download windows installer, NOT All Platforms (zip file)
+	(3) Extract zip file into C:/app/h2
+
+-----------------------------------------------
+Step2. Start H2 database engine & admin console
+
+	> cd C:/app/h2/bin
+	> h2w.bat
+
+-----------------------------------------------
+Step3. Create a New Memory Database (Embedded Mode)
+
+	In system tray icon, 'H2 database engine' > mouse right > H2 console,
+
+	(1) Saved Settings:	Generic H2 (Embedded)
+	(1) Driver Class: 		org.h2.Driver
+	(2) JDBC URL: 			jdbc:h2:mem:<NewDbName>
+
+			ex1) jdbc:h2:mem:Yoseph
+			ex2) jdbc:h2:mem:Trinity
+
+	(3) User Name:		sa
+	(4) Password:			N/A
+
+	Press <Connect>
+
+-----------------------------------------------
+Step4. Create a New File-based Database (Server Mode)
+
+	In system tray icon, 'H2 database engine' > mouse right > create a new database ...,
+
+	(1) Database Path:	C:/app/h2/pathTo/<NewDbName>
+	(2) Username: 						sa
+	(3) Password:							<specify>
+	(4) Password Confirmation: 	<specify>
+
+	Press <Create> Button.
+
+	* The result jdbc url :
+
+		1) jdbc:h2:tcp://0.0.0.0/C:/app/h2/pathTo/<NewDbName> OR 
+		2) jdbc:h2:C:/app/h2/pathTo/<NewDbName>
+
+		(ex) 	jdbc:h2:tcp://0.0.0.0/C:/app/h2/data/test OR 
+				jdbc:h2:C:/app/h2/pathTo/test
+
+				If *Not using h2 console, you shoud create the specified <NewDbName> file like the following:
+				> touch C:/app/h2/data/test.mv.db
+
+-----------------------------------------------
+Step6. Set Password
+
+	ALTER USER username SET PASSWORD passowrd;
+
+		ex) ALTER USER sa SET PASSWORD 'sa';
+
+
+	
